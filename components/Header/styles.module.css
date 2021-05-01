@@ -1,0 +1,3 @@
+.wrapper {
+  @apply bg-primary p-4 shadow-md border-0;
+}
