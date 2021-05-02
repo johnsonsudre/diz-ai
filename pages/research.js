@@ -10,25 +10,42 @@ const Research = () => {
     whatsapp: "",
     date: "",
     coupon: moment().format("YYMMDDHHmmSSS"),
-    score: 0,
+    score: null,
     promoName: "",
     promoMessage: "",
   });
   const scores = [0, 1, 2, 3, 4, 5];
   const [success, setSuccess] = useState(false);
   const [dataReturned, setDataReturned] = useState({});
-  const add = async () => {
-    try {
-      const response = await fetch("/api/add", {
-        method: "POST",
-        body: JSON.stringify(form),
-      });
-      const data = await response.json();
-      setSuccess(true);
-      setDataReturned(data);
-    } catch (err) {
-      console.log(err);
+  const validateForm = () => {
+    if (form.name === "") {
+      alert("Nome não pode ser vazio.");
+    } else {
+      if (form.email === "" && form.whatsapp === "") {
+        alert("Preencha email ou telefone.");
+      } else {
+        if (form.score === null) {
+          alert("Dê sua nota.");
+        } else {
+          return true;
+        }
+      }
     }
+    return false;
+  };
+  const add = async () => {
+    if (validateForm())
+      try {
+        const response = await fetch("/api/add", {
+          method: "POST",
+          body: JSON.stringify(form),
+        });
+        const data = await response.json();
+        setSuccess(true);
+        setDataReturned(data);
+      } catch (err) {
+        console.log(err);
+      }
   };
 
   const onChange = (evt) => {
@@ -82,7 +99,10 @@ const Research = () => {
           <label className="block">Dê sua nota</label>
           <div className="flex border-2 rounded-xl">
             {scores.map((score) => (
-              <div key={score} className="flex-1 text-center font-black text-2xl">
+              <div
+                key={score}
+                className="flex-1 text-center font-black text-2xl"
+              >
                 {score}
                 <br />
                 <input
@@ -117,10 +137,9 @@ const Research = () => {
               Obrigado por contribuir com sua sugestão e/ou crítica.
             </p>
             <p className="font-bold p-6 border-2 border-green-500 rounded-xl uppercase text-center">
-              
-                Parabéns<i>{" " + form.name}</i>
-                {"!"}
-              <br/>
+              Parabéns<i>{" " + form.name}</i>
+              {"!"}
+              <br />
               {dataReturned.promoMessage}
             </p>
             <p className="pt-4 uppercase text-center">Seu cupom:</p>
