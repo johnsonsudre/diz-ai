@@ -12,14 +12,18 @@ const Index = () => {
       <PageTitle title="Home" />
       {/* <img src={data.companyBrand} className="mx-auto" alt={data.companyName} /> */}
       <div className="mt-10 lg:mx-80 font-normal text-center text-lg md:text-3xl">
-        Nós do <b>{!data && "..."}{data && data.companyName}</b> sempre buscamos atender melhor você cliente.
-        Por isso, estamos sempre abertos a ouvir sua opnião.
+        <b>
+          {!data && "..."}
+          {data && data.companyName}
+        </b>
+        , sempre buscando atender melhor você. Estamos sempre
+        abertos a ouvir sua opnião.
       </div>
-      <div className="text-center bg-brand text-md font-black text-primary m-12 px-2 py-2  md:mx-auto md:text-3xl md:px-10 md:py-5 xl:mx-96 rounded-xl shadow-md hover:bg-tertiary">
-        <Link href="/research">
+      <Link href="/research">
+        <div className="cursor-pointer text-center bg-brand text-md font-black text-primary m-12 px-2 py-2  md:mx-auto md:text-3xl md:px-10 md:py-5 xl:mx-96 rounded-xl shadow-md hover:bg-brand-light">
           <a>Dar opnião ou sugestão e ganhar cupom</a>
-        </Link>
-      </div>
+        </div>
+      </Link>
       <div className="text-center my-12 font-bold">
         {!data && <p>Carregando...</p>}
         {data && data.promoShow && (

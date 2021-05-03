@@ -5,6 +5,8 @@ module.exports = {
     extend: {
       colors: {
         'brand': '#c83771',
+        'brand-light': '#ff408c',
+        'brand-dark': '#ab0044',
         'primary': '#eef',
         'secondary': '#ccd',
         'tertiary': '#99a',
@@ -14,5 +16,7 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/custom-forms'),
+  ]
 }

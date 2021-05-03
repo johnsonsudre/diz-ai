@@ -76,7 +76,6 @@ const Research = () => {
       {!success && (
         <div className="max-w-md mx-auto p-6">
           <div className="text-center">
-            <div id="couponBitmap"></div>
             <h1 className="text-2xl font-bold">Críticas e sugestões</h1>
             <p className="font-thin uppercase">
               Preencha os dados, participe de promoções e concorra a prêmios
@@ -89,7 +88,7 @@ const Research = () => {
             onChange={onChange}
             value={form.name}
             placeholder="Digite seu nome"
-            className="w-full text-center placeholder-gray-200 shadow border-2 border-tertiary rounded-xl text-tertiary text-2xl font-bold p-2 mb-6"
+            className="w-full font-bold text-tertiary text-2xl text-center placeholder-gray-200 border focus:outline-none focus:ring-4 focus:ring-brand focus:border-transparent shadow rounded-xl p-2 mb-6"
           />
           <label className="block">E-mail</label>
           <input
@@ -98,7 +97,7 @@ const Research = () => {
             onChange={onChange}
             value={form.email}
             placeholder="Digite seu email"
-            className="w-full text-center placeholder-gray-200 shadow border-2 border-tertiary rounded-xl text-tertiary text-2xl font-bold p-2 mb-6"
+            className="w-full font-bold text-tertiary text-2xl text-center placeholder-gray-200 border focus:outline-none focus:ring-4 focus:ring-brand focus:border-transparent shadow rounded-xl p-2 mb-6"
           />
           <label className="block">Whattsapp</label>
           <input
@@ -107,20 +106,20 @@ const Research = () => {
             onChange={onChange}
             value={form.whatsapp}
             placeholder="Nº de Whatsapp"
-            className="w-full text-center placeholder-gray-200 shadow border-2 border-tertiary rounded-xl text-tertiary text-2xl font-bold p-2 mb-6"
+            className="w-full font-bold text-tertiary text-2xl text-center placeholder-gray-200 border focus:outline-none focus:ring-4 focus:ring-brand focus:border-transparent shadow rounded-xl p-2 mb-6"
           />
           <label className="block">Dê sua nota</label>
-          <div className="flex border-2 rounded-xl">
+          <div className="flex border-2 rounded-xl focus:outline-none focus:ring-4 focus:ring-brand focus:border-transparent">
             {scores.map((score) => (
               <div
                 key={score}
-                className="flex-1 text-center font-black text-2xl"
+                className="flex-1 text-center font-black text-2xl mt-2 mb-4"
               >
                 {score}
                 <br />
                 <input
                   type="radio"
-                  className="form-radio h-8 w-8"
+                  className="form-radio h-8 w-8 text-brand border-2"
                   name="score"
                   value={score}
                   onChange={onChange}
@@ -131,7 +130,7 @@ const Research = () => {
 
           <button
             onClick={add}
-            className="mt-16 w-full bg-brand font-bold text-primary py-3 rounded-lg shadow-lg hover:bg-tertiary"
+            className="mt-16 w-full bg-brand font-bold text-primary py-3 rounded-lg shadow-lg hover:bg-brand-light hover:boder"
           >
             Gerar meu cupom
           </button>
@@ -140,7 +139,6 @@ const Research = () => {
       {success && (
         <div className="max-w-md mx-auto p-6">
           <div className="text-center">
-            <div id="couponBitmap"></div>
             <h1 className="text-2xl font-bold">Baixe seu cupom</h1>
             <p className="font-thin uppercase mb-4">
               Sua crítica é muito importante para nós!!
