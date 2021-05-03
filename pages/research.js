@@ -149,7 +149,10 @@ const Research = () => {
             className="bg-green-100 border-t border-b border-green-500 text-green-700 px-4 py-3"
             role="alert"
           >
-            <p className="text-2xl font-black text-center pb-3">
+            <p className="text-3xl font-black text-center pb-3">
+              {dataReturned.companyName}
+            </p>
+            <p className="text-2xl font-bold text-center pb-3 uppercase">
               {dataReturned.promoName}
             </p>
             <p className="uppercase text-center pb-5">

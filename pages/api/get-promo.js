@@ -12,13 +12,14 @@ export default async (req, res) => {
       private_key: fromBase64(process.env.SHEET_PRIVATE_KEY)
     });
     await spreadsheet.loadInfo();
-    const sheet = spreadsheet.sheetsByTitle["Config"];
-    await sheet.loadCells("A1:C5");
-    const companyName = sheet.getCell(1, 2);
-    const companyBrand = sheet.getCell(1, 1);
-    const promoShow = sheet.getCell(4, 0);
-    const promoName = sheet.getCell(4, 1);
-    const promoMessage = sheet.getCell(4, 2);
+
+    const sheetConfig = spreadsheet.sheetsByTitle["Config"];
+    await sheetConfig.loadCells("A1:C5");
+    const companyName = sheetConfig.getCell(1, 2);
+    const companyBrand = sheetConfig.getCell(1, 1);
+    const promoShow = sheetConfig.getCell(4, 0);
+    const promoName = sheetConfig.getCell(4, 1);
+    const promoMessage = sheetConfig.getCell(4, 2);
     //console.log(companyName.value);
     res.end(
       JSON.stringify({
