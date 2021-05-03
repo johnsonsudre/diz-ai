@@ -73,16 +73,15 @@ const Research = () => {
   return (
     <div className="px-6">
       <PageTitle title="Pesquisa" />
-      <div className="text-center pt-6">
-        <div id="couponBitmap"></div>
-        <h1 className="text-2xl font-bold">Críticas e sugestões</h1>
-        <p className="font-thin uppercase">
-          Preencha os dados, participe de promoções e concorra a prêmios
-        </p>
-      </div>
-
       {!success && (
         <div className="max-w-md mx-auto p-6">
+          <div className="text-center">
+            <div id="couponBitmap"></div>
+            <h1 className="text-2xl font-bold">Críticas e sugestões</h1>
+            <p className="font-thin uppercase">
+              Preencha os dados, participe de promoções e concorra a prêmios
+            </p>
+          </div>
           <label className="block">Seu nome</label>
           <input
             type="text"
@@ -140,13 +139,20 @@ const Research = () => {
       )}
       {success && (
         <div className="max-w-md mx-auto p-6">
+          <div className="text-center">
+            <div id="couponBitmap"></div>
+            <h1 className="text-2xl font-bold">Baixe seu cupom</h1>
+            <p className="font-thin uppercase mb-4">
+              Sua crítica é muito importante para nós!!
+            </p>
+          </div>
           <div
             id="coupon" 
             className="bg-green-100 border-t border-b border-green-500 text-green-700 px-4 py-3"
             role="alert"
           >
-            <p className="text-2xl font-normal text-center pb-3">
-              Promoção {dataReturned.promoName}
+            <p className="text-2xl font-black text-center pb-3">
+              {dataReturned.promoName}
             </p>
             <p className="uppercase text-center pb-5">
               Obrigado por contribuir com sua sugestão e/ou crítica.
@@ -162,6 +168,9 @@ const Research = () => {
               {dataReturned.coupon}
             </p>
           </div>
+          <p className="text-center">
+              Baixe seu cupom e apresente-o no caixa
+            </p>
           <button
             onClick={onCapture}
             className="mt-8 w-full bg-brand font-bold text-primary py-3 rounded-lg shadow-lg hover:bg-tertiary"
