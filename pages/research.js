@@ -169,7 +169,7 @@ const Research = () => {
             </p>
           </div>
           <p className="text-center">
-              Baixe seu cupom e apresente-o no caixa
+              Baixe o cupom e apresente-o na próxima compra.
             </p>
           <button
             onClick={onCapture}
