@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import moment from "moment";
 import PageTitle from "../components/PageTitle";
+import {toPng} from 'html-to-image';
+import { saveAs } from 'file-saver';
 
 const Research = () => {
   const [form, setForm] = useState({
@@ -17,6 +19,14 @@ const Research = () => {
   const scores = [0, 1, 2, 3, 4, 5];
   const [success, setSuccess] = useState(false);
   const [dataReturned, setDataReturned] = useState({});
+
+  const onCapture = async ()=> {
+    console.log(document.getElementById('coupon'))
+    const image = await toPng(document.getElementById('coupon'))
+    console.log(image)
+    saveAs(image, 'Meu_Cupom-'+dataReturned.coupon+'.png')
+   }
+
   const validateForm = () => {
     if (form.name === "") {
       alert("Nome não pode ser vazio.");
@@ -33,6 +43,7 @@ const Research = () => {
     }
     return false;
   };
+
   const add = async () => {
     if (validateForm())
       try {
@@ -57,10 +68,13 @@ const Research = () => {
     }));
   };
 
+
+
   return (
     <div className="px-6">
       <PageTitle title="Pesquisa" />
       <div className="text-center pt-6">
+        <div id="couponBitmap"></div>
         <h1 className="text-2xl font-bold">Críticas e sugestões</h1>
         <p className="font-thin uppercase">
           Preencha os dados, participe de promoções e concorra a prêmios
@@ -120,13 +134,14 @@ const Research = () => {
             onClick={add}
             className="mt-16 w-full bg-brand font-bold text-primary py-3 rounded-lg shadow-lg hover:bg-tertiary"
           >
-            Salvar
+            Gerar meu cupom
           </button>
         </div>
       )}
       {success && (
         <div className="max-w-md mx-auto p-6">
           <div
+            id="coupon" 
             className="bg-green-100 border-t border-b border-green-500 text-green-700 px-4 py-3"
             role="alert"
           >
@@ -147,6 +162,12 @@ const Research = () => {
               {dataReturned.coupon}
             </p>
           </div>
+          <button
+            onClick={onCapture}
+            className="mt-8 w-full bg-brand font-bold text-primary py-3 rounded-lg shadow-lg hover:bg-tertiary"
+          >
+            Download
+          </button>
         </div>
       )}
     </div>
