@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useState } from "react";
 import moment from "moment";
@@ -21,10 +22,8 @@ const Research = () => {
   const [dataReturned, setDataReturned] = useState({});
 
   const onCapture = async ()=> {
-    console.log(document.getElementById('coupon'))
     const image = await toPng(document.getElementById('coupon'))
-    console.log(image)
-    saveAs(image, 'Meu_Cupom-'+dataReturned.coupon+'.png')
+    saveAs(image, 'Meu_Cupom-'+dataReturned.coupon+'.png')    
    }
 
   const validateForm = () => {
